@@ -39,7 +39,15 @@ assign usr_led12 = led_cnt[26];
 assign usr_led17 = led_cnt[26];
 assign usr_led22 = led_cnt[26];
 
-  ms7035 ms7035_i
-       ();
+  ms7035 ms7035_i(
+    mipi_phy_clk_hs_n(mipi_phy_clk_hs_n),
+    mipi_phy_clk_hs_p(mipi_phy_clk_hs_p),
+    mipi_phy_clk_lp_n(mipi_phy_clk_lp_n),
+    mipi_phy_clk_lp_p(mipi_phy_clk_lp_p),
+    mipi_phy_data_hs_n(mipi_phy_data_hs_n),
+    mipi_phy_data_hs_p(mipi_phy_data_hs_p),
+    mipi_phy_data_lp_n(mipi_phy_data_lp_n),
+    mipi_phy_data_lp_p(mipi_phy_data_lp_p)
+  );
 
 endmodule
