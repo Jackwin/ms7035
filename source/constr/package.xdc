@@ -16,6 +16,44 @@ set_property PACKAGE_PIN AE18 [get_ports usr_led17]
 set_property IOSTANDARD LVCMOS33 [get_ports usr_led22]
 set_property PACKAGE_PIN AC24 [get_ports usr_led22]
 
+## MIPI-0
+#set_property -dict {PACKAGE_PIN N4 IOSTANDARD HSUL_12} [get_ports mipi_phy_clk_lp_p]
+#set_property -dict {PACKAGE_PIN M4 IOSTANDARD HSUL_12} [get_ports mipi_phy_clk_lp_n]
+
+#set_property -dict {PACKAGE_PIN N3 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data_lp_p[0]}]
+#set_property -dict {PACKAGE_PIN N2 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data_lp_n[0]}]
+
+#set_property -dict {PACKAGE_PIN D1 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data_lp_p[1]}]
+#set_property -dict {PACKAGE_PIN C1 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data_lp_n[1]}]
+
+#set_property -dict {PACKAGE_PIN C8 IOSTANDARD LVDS} [get_ports mipi_phy_clk_hs_p]
+#set_property -dict {PACKAGE_PIN C7 IOSTANDARD LVDS} [get_ports mipi_phy_clk_hs_n]
+
+#set_property -dict {PACKAGE_PIN F8 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_p[0]}]
+#set_property -dict {PACKAGE_PIN E7 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_n[0]}]
+
+#set_property -dict {PACKAGE_PIN B7 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_p[1]}]
+#set_property -dict {PACKAGE_PIN A7 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_n[1]}]
+
+##MIPI-1
+set_property -dict {PACKAGE_PIN J1 IOSTANDARD HSUL_12} [get_ports mipi_phy_clk_lp_p]
+set_property -dict {PACKAGE_PIN H1 IOSTANDARD HSUL_12} [get_ports mipi_phy_clk_lp_n]
+
+set_property -dict {PACKAGE_PIN K2 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data_lp_p[0]}]
+set_property -dict {PACKAGE_PIN K1 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data_lp_n[0]}]
+
+set_property -dict {PACKAGE_PIN H2 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data_lp_p[1]}]
+set_property -dict {PACKAGE_PIN G1 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data_lp_n[1]}]
+
+set_property -dict {PACKAGE_PIN G7 IOSTANDARD LVDS} [get_ports mipi_phy_clk_hs_p]
+set_property -dict {PACKAGE_PIN F7 IOSTANDARD LVDS} [get_ports mipi_phy_clk_hs_n]
+
+set_property -dict {PACKAGE_PIN E6 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_p[0]}]
+set_property -dict {PACKAGE_PIN D5 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_n[0]}]
+
+set_property -dict {PACKAGE_PIN A9 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_p[1]}]
+set_property -dict {PACKAGE_PIN A8 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_n[1]}]
+
 
 # # BANK 35
 # NET "IO_L1P_T0_AD0P_35" LOC = "F12";

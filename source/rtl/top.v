@@ -22,8 +22,16 @@
 
 module top(
     input   clk_50m,
-    // input   rstï¼Œ
-
+    // input   rstï¼?
+    input       mipi_phy_clk_hs_p,
+    input       mipi_phy_clk_hs_n,
+    input       mipi_phy_clk_lp_p,
+    input       mipi_phy_clk_lp_n,
+    input[1:0]  mipi_phy_data_hs_p,
+    input[1:0]  mipi_phy_data_hs_n,
+    input[1:0]  mipi_phy_data_lp_p,
+    input[1:0]  mipi_phy_data_lp_n,
+  
     output  usr_led12,
     output  usr_led17,
     output  usr_led22
@@ -40,14 +48,14 @@ assign usr_led17 = led_cnt[26];
 assign usr_led22 = led_cnt[26];
 
   ms7035 ms7035_i(
-    mipi_phy_clk_hs_n(mipi_phy_clk_hs_n),
-    mipi_phy_clk_hs_p(mipi_phy_clk_hs_p),
-    mipi_phy_clk_lp_n(mipi_phy_clk_lp_n),
-    mipi_phy_clk_lp_p(mipi_phy_clk_lp_p),
-    mipi_phy_data_hs_n(mipi_phy_data_hs_n),
-    mipi_phy_data_hs_p(mipi_phy_data_hs_p),
-    mipi_phy_data_lp_n(mipi_phy_data_lp_n),
-    mipi_phy_data_lp_p(mipi_phy_data_lp_p)
+    .mipi_phy_clk_hs_n(mipi_phy_clk_hs_n),
+    .mipi_phy_clk_hs_p(mipi_phy_clk_hs_p),
+    .mipi_phy_clk_lp_n(mipi_phy_clk_lp_n),
+    .mipi_phy_clk_lp_p(mipi_phy_clk_lp_p),
+    .mipi_phy_data_hs_n(mipi_phy_data_hs_n),
+    .mipi_phy_data_hs_p(mipi_phy_data_hs_p),
+    .mipi_phy_data_lp_n(mipi_phy_data_lp_n),
+    .mipi_phy_data_lp_p(mipi_phy_data_lp_p)
   );
 
 endmodule
