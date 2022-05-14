@@ -1,3 +1,20 @@
+##PMOD
+##IO_L11P_T1_SRCC_13
+set_property PACKAGE_PIN AD23[get_ports {IO_L11P_T1_SRCC_13}]
+##IO_L12N_T1_MRCC_13
+set_property PACKAGE_PIN AC24[get_ports {IO_L12N_T1_MRCC_13}]
+##IO_L6N_T0_VREF_13
+set_property PACKAGE_PIN AB24[get_ports {IO_L6N_T0_VREF_13}]
+##IO_L6P_T0_13
+set_property PACKAGE_PIN AA24[get_ports {IO_L6P_T0_13}]
+##IO_L1N_T0_13
+set_property PACKAGE_PIN AB25[get_ports {IO_L1N_T0_13}]
+##IO_L1P_T0_13
+set_property PACKAGE_PIN AA25[get_ports {IO_L1P_T0_13}]
+##IO_L19N_T3_VREF_13
+set_property PACKAGE_PIN Y20[get_ports {IO_L19N_T3_VREF_13}]
+##IO_L19P_T3_13
+set_property PACKAGE_PIN W20[get_ports {IO_L19P_T3_13}]
 ##CON9
 ##IO_L2N_T0_12
 set_property PACKAGE_PIN AC11[get_ports {IO_L2N_T0_12}]
@@ -99,20 +116,5 @@ set_property PACKAGE_PIN AA19[get_ports {IO_L22P_T3_13}]
 set_property PACKAGE_PIN W18[get_ports {IO_L23P_T3_13}]
 ##IO_L23N_T3_13
 set_property PACKAGE_PIN W19[get_ports {IO_L23N_T3_13}]
-##PMOD
-##IO_L11P_T1_SRCC_13
-set_property PACKAGE_PIN AD23[get_ports {IO_L11P_T1_SRCC_13}]
-##IO_L12N_T1_MRCC_13
-set_property PACKAGE_PIN AC24[get_ports {IO_L12N_T1_MRCC_13}]
-##IO_L6N_T0_VREF_13
-set_property PACKAGE_PIN AB24[get_ports {IO_L6N_T0_VREF_13}]
-##IO_L6P_T0_13
-set_property PACKAGE_PIN AA24[get_ports {IO_L6P_T0_13}]
-##IO_L1N_T0_13
-set_property PACKAGE_PIN AB25[get_ports {IO_L1N_T0_13}]
-##IO_L1P_T0_13
-set_property PACKAGE_PIN AA25[get_ports {IO_L1P_T0_13}]
-##IO_L19N_T3_VREF_13
-set_property PACKAGE_PIN Y20[get_ports {IO_L19N_T3_VREF_13}]
-##IO_L19P_T3_13
-set_property PACKAGE_PIN W20[get_ports {IO_L19P_T3_13}]
+## IO constrain template
+## set_property IOSTANDARD LVCMOS25 [get_ports {}]

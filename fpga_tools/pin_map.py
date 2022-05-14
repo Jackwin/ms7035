@@ -28,6 +28,8 @@ with open(target_xdc, 'w') as f:
                     f.write("##" + signal_item + '\n')
                     f.write("set_property PACKAGE_PIN "+ signal_pin_dict[signal_item]+
                     "[get_ports {"+signal_item+"}]"+'\n')
+        f.write("## IO constrain template\n")       
+        f.write("## set_property IOSTANDARD LVCMOS25 [get_ports {}]\n")
         f_json.close()
     f.close()
 
