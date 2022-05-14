@@ -25,6 +25,7 @@ with open(target_xdc, 'w') as f:
             f.write("##" + connector + '\n')
             for signal_item in d[connector]:
                 if signal_item in signal_pin_dict.keys():
+                    f.write("##" + signal_item + '\n')
                     f.write("set_property PACKAGE_PIN "+ signal_pin_dict[signal_item]+
                     "[get_ports {"+signal_item+"}]"+'\n')
         f_json.close()
