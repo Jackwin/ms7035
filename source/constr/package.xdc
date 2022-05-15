@@ -1,6 +1,6 @@
 
 set_property VCCAUX_IO DONTCARE [get_ports clk_50m]
-set_property IOSTANDARD LVCMOS33 [get_ports clk_50m]
+set_property IOSTANDARD LVCMOS18 [get_ports clk_50m]
 # evaluable board
 # set_property PACKAGE_PIN AC23 [get_ports clk_50m]
 # CAD-MS7035 IO_L12P_T1_MRCC_12
@@ -27,16 +27,16 @@ set_property PACKAGE_PIN AC13 [get_ports clk_50m]
 # D19 -> IO_L12P_T1_MRCC_33 -> J4
 # D20 -> IO_L12N_T1_MRCC_33 -> J3
 
-set_property PACKAGE_PIN AD10 [get_ports {usr_led[0]}]
-set_property PACKAGE_PIN AA10 [get_ports {usr_led[1]}]
-set_property PACKAGE_PIN J4 [get_ports {usr_led[2]}]
-set_property PACKAGE_PIN J3 [get_ports {usr_led[3]}]
+# set_property PACKAGE_PIN AD10 [get_ports {usr_led[0]}]
+# set_property PACKAGE_PIN AA10 [get_ports {usr_led[1]}]
+# set_property PACKAGE_PIN J4 [get_ports {usr_led[2]}]
+# set_property PACKAGE_PIN J3 [get_ports {usr_led[3]}]
 
-set_property IOSTANDARD LVCMOS33 [get_ports {usr_led[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {usr_led[1]}]
+# set_property IOSTANDARD LVCMOS33 [get_ports {usr_led[0]}]
+# set_property IOSTANDARD LVCMOS33 [get_ports {usr_led[1]}]
 
-set_property IOSTANDARD LVCMOS18 [get_ports {usr_led[2]}]
-set_property IOSTANDARD LVCMOS18 [get_ports {usr_led[3]}]
+# set_property IOSTANDARD LVCMOS18 [get_ports {usr_led[2]}]
+# set_property IOSTANDARD LVCMOS18 [get_ports {usr_led[3]}]
 
 
 # CAD-MS7035
@@ -45,20 +45,20 @@ set_property IOSTANDARD LVCMOS18 [get_ports {usr_led[3]}]
 #SW3<3> ->IO_L20N_T3_12 -> AB16
 #SW3<4> ->IO_L20P_T3_12 -> AB17
 
-set_property PACKAGE_PIN AC16 [get_ports {slide_button[0]}]
-set_property PACKAGE_PIN AC17 [get_ports {slide_button[1]}]
-set_property PACKAGE_PIN AB16 [get_ports {slide_button[2]}]
-set_property PACKAGE_PIN AB17 [get_ports {slide_button[3]}]
+# set_property PACKAGE_PIN AC16 [get_ports {slide_button[0]}]
+# set_property PACKAGE_PIN AC17 [get_ports {slide_button[1]}]
+# set_property PACKAGE_PIN AB16 [get_ports {slide_button[2]}]
+# set_property PACKAGE_PIN AB17 [get_ports {slide_button[3]}]
 
-set_property IOSTANDARD LVCMOS33 [get_ports {slide_button[*]}]
+# set_property IOSTANDARD LVCMOS33 [get_ports {slide_button[*]}]
 
 #CAD-MS7035 push button
 #KEY-1 IO_L12N_T1_MRCC_12 -> AD13
 #KEY-2 IO_L23P_T3_33 -> N7
-set_property PACKAGE_PIN AD13 [get_ports {key[0]}]
-set_property PACKAGE_PIN N7 [get_ports {key[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {key[0]}]
-set_property IOSTANDARD LVCMOS18 [get_ports {key[1]}]
+# set_property PACKAGE_PIN AD13 [get_ports {key[0]}]
+# set_property PACKAGE_PIN N7 [get_ports {key[1]}]
+# set_property IOSTANDARD LVCMOS33 [get_ports {key[0]}]
+# set_property IOSTANDARD LVCMOS18 [get_ports {key[1]}]
 
 ## MIPI-0
 #set_property -dict {PACKAGE_PIN N4 IOSTANDARD HSUL_12} [get_ports mipi_phy_clk_lp_p]
