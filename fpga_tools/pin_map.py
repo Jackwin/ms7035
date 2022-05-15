@@ -23,11 +23,15 @@ with open(target_xdc, 'w') as f:
         d = json.load(f_json)
         for connector in connector_list:
             f.write("##" + connector + '\n')
+            io_count = 0
             for signal_item in d[connector]:
                 if signal_item in signal_pin_dict.keys():
                     f.write("##" + signal_item + '\n')
                     f.write("set_property PACKAGE_PIN "+ signal_pin_dict[signal_item]+
-                    "[get_ports {"+signal_item+"}]"+'\n')
+                    " [get_ports {"+connector+"[" + str(io_count) + "]"+"}]"+'\n')
+                    io_count = io_count + 1
+                else:
+                    print(signal_item + " is not found\n")
         f.write("## IO constrain template\n")       
         f.write("## set_property IOSTANDARD LVCMOS25 [get_ports {}]\n")
         f_json.close()
