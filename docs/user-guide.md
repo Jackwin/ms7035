@@ -47,8 +47,8 @@ In addition to the zynq-7035, the whole board includes DDR3, EMMC, and QSPI-Flas
 
 The Zynq7035 family is based on the Xilinx SoC architecture, a heterogeneous system containing an ARM A9 processor and the Kinex-7 equivalent FPGA logics. High speed buses bridge the communication between these two parts, such as 4 general-purpose AXI ports and 4 high-speed AXI ports，shown in figure-1.
 
-<center><img src="./pics/zynq-mp-core-dual.png" style="zoom: 50%;" /></center>
-<center>Figure-1 Zynq SOC block diagram</center>
+<div align=center><img width="400" height="400" src="./pics/zynq-mp-core-dual.png" /></div>
+<div align=center>Figure-1 Zynq SOC block diagram</div>
 
 
 
