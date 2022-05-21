@@ -1,4 +1,4 @@
-## Brief Introduction
+## Introduction
 
 
 
@@ -73,14 +73,51 @@ Figure-2 illustrates the banks inside the chip for the XC7Z035 series , but For 
 Zynq IO banks are designated as either High Performance (HP) or High Density (HD). HP, as its name infers, is where your highest speed IO will be connected, with the VCCO raning from 1.2V to 1.8V and being limited to 1.8V . HD is for general purpose use, providing voltage support from 1.2V to 3.3V and can support a maximum VCCO of 3.3V.
 
 #### DDR3
-#### emmc
+
+SOM board contains two DDR3 chips from Micron, 1GB capacity together, running at 1066MT/s. 
+
+<div align=center><img width="260" height="84"src=".\pics\micron.png"/></div>
+
+| Vender |   Serial Number   | Package |
+| :----: | :---------------: | :-----: |
+| Micron | MT41K256M16TW-107 | FBGA-96 |
+
+| data bus | row address | bank address | column address | page size |
+| :------: | :---------: | :----------: | :------------: | :-------: |
+|  32 bit  |   15 bit    |    3 bit     |     10 bit     |    2KB    |
+
+
+
+#### eMMC
+
+SOM board carries a 16GB eMMC for data storage, which conforms to the JEDEC Version 5.1.
+
+*Cautious: Zynq 7000 FPGAs does not support booting from eMMC.*
+
+| Vender  |  Serial Number  |  Package  |
+| :-----: | :-------------: | :-------: |
+| TOSHIBA | THGBMHG7C1LBAIL | JEDEC 5.1 |
+
+<div align=center><img width="270" height="240"src=".\pics\emmc.png"/></div>
+
+
 
 | emmc signals | FPGA signals |
 | :----------: | :----------: |
-|              |              |
-|              |              |
-|              |              |
-|              |              |
+|   MMC_DAT0   | MIO46 |
+|   MMC_CMD    | MIO47 |
+|   MMC_CCLK   | MIO48 |
+|  MMC_DATA1   | MIO49 |
+|  MMC_DATA2   | MIO50 |
+|  MMC_DATA3   | MIO51 |
+
+
+
+The Vivado design is shown as the following, where the emmc locates at **SD1**
+
+<div align=center><img width="835" height="294" src="./pics/vivado-emmc.png" alt="image-20220521162528853"  /></div><div align=center>Vivado eMMC configuration</div>
+
+
 
 #### QSPI
 
@@ -91,6 +128,7 @@ Two QSPI Flashes are combined in parallel to be 512Mbit Flash with 8-bit bus, wh
 | Vender  | Serial Number |   Package    |
 | :-----: | :-----------: | :----------: |
 | Winbond | W25Q256FVEIG  | WSON-8 8x6mm |
+
 
 <div align=center><img src="./pics/Winbond.png" width="250" height="45" alt="image-20220521161502171" /></div>
 
@@ -111,8 +149,13 @@ Two QSPI Flashes are combined in parallel to be 512Mbit Flash with 8-bit bus, wh
 |   QSPI1_D2   |   PS_MIO12   |
 |   QSPI1_D3   |   PS_MIO13   |
 
-<div align=center><img width="500" height="200" src="./pics/qspi-flash-vivado.png" alt="image-20220521162528853"  /></div>
-<div align=center>Vivado QSPI-Flash configuration</div>
+The Vivado design is shown as the following, which the MIO8 should be connected as the feedback clock to run over 40MHz. 
+
+
+
+<div align=center><img width="500" height="200" src="./pics/qspi-flash-vivado.png" alt="image-20220521162528853"  /></div><div align=center>Vivado QSPI-Flash configuration</div>
+
+
 
 ### Carry-board
 |  | parts | Parameter |
