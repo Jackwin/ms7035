@@ -66,7 +66,7 @@ Figure-2 illustrates the banks inside the chip for the XC7Z035 series , but For 
 
 - GTX bonded: Quads 111, Quads 112 
 
-<div align=center><img src=".\pics\7z035-banks.png" style="zoom:50%;" /></div>
+<div align=center><img width="800" height="700"src=".\pics\7z035-banks.png" style="zoom:50%;" /></div>
 
 <div align=center> Figure-2: HR and HP banks in ZC7035</div>
 
@@ -92,9 +92,9 @@ Two QSPI Flashes are combined in parallel to be 512Mbit Flash with 8-bit bus, wh
 | ------- | ------------- | ------------ |
 | Winbond | W25Q256FVEIG  | WSON-8 8x6mm |
 
-<div align=center><img src="./pics/Winbond.png" alt="image-20220521161502171" style="zoom:33%;" /></div>
+<div align=center><img src="./pics/Winbond.png" width="500" height="90" alt="image-20220521161502171" style="zoom:33%;" /></div>
 
-<div align=center><img src="./pics/WSON-8.png" alt="image-20220521161747324" style="zoom:33%;" /></div>
+<div align=center><img width="800" height="400"src="./pics/WSON-8.png" alt="image-20220521161747324" style="zoom:33%;" /></div>
 
 | QSPI signals | FPGA signals |      |
 | ------------ | ------------ | ---- |
@@ -111,7 +111,7 @@ Two QSPI Flashes are combined in parallel to be 512Mbit Flash with 8-bit bus, wh
 | QSPI1_D2     | PS_MIO12     |      |
 | QSPI1_D3     | PS_MIO13     |      |
 
-<div align=center><img src="./pics/qspi-flash-vivado.png" alt="image-20220521162528853" style="zoom: 50%;" /></div>
+<div align=center><img width="1036" height="400" src="./pics/qspi-flash-vivado.png" alt="image-20220521162528853" style="zoom: 50%;" /></div>
 <div align=center>Vivado QSPI-Flash configuration</div>
 
 ### Carry-board
