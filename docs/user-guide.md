@@ -66,7 +66,7 @@ Figure-2 illustrates the banks inside the chip for the XC7Z035 series , but For 
 
 - GTX bonded: Quads 111, Quads 112 
 
-<div align=center><img width="800" height="700"src=".\pics\7z035-banks.png" style="zoom:50%;" /></div>
+<div align=center><img width="400" height="350"src=".\pics\7z035-banks.png"/></div>
 
 <div align=center> Figure-2: HR and HP banks in ZC7035</div>
 
@@ -75,12 +75,12 @@ Zynq IO banks are designated as either High Performance (HP) or High Density (HD
 #### DDR3
 #### emmc
 
-| emmc signals | FPGA signals |      |
-| ------------ | ------------ | ---- |
-|              |              |      |
-|              |              |      |
-|              |              |      |
-|              |              |      |
+| emmc signals | FPGA signals |
+| :----------: | :----------: |
+|              |              |
+|              |              |
+|              |              |
+|              |              |
 
 #### QSPI
 
@@ -88,39 +88,39 @@ Two QSPI Flashes are combined in parallel to be 512Mbit Flash with 8-bit bus, wh
 
 *Cautious: In order to run high speed clock over 40MHz for the QSPI flash, the MIO8 should be left open.*
 
-| Vender  | Serial Number | Package      |
-| ------- | ------------- | ------------ |
+| Vender  | Serial Number |   Package    |
+| :-----: | :-----------: | :----------: |
 | Winbond | W25Q256FVEIG  | WSON-8 8x6mm |
 
-<div align=center><img src="./pics/Winbond.png" width="500" height="90" alt="image-20220521161502171" style="zoom:33%;" /></div>
+<div align=center><img src="./pics/Winbond.png" width="250" height="45" alt="image-20220521161502171" /></div>
 
-<div align=center><img width="800" height="400"src="./pics/WSON-8.png" alt="image-20220521161747324" style="zoom:33%;" /></div>
+<div align=center><img width="400" height="200"src="./pics/WSON-8.png" alt="image-20220521161747324" /></div>
 
-| QSPI signals | FPGA signals |      |
-| ------------ | ------------ | ---- |
-| QSPI1_CS     | PS_MIO0      |      |
-| QSPI0_CS     | PS_MIO1      |      |
-| QSPI0_D0     | PS_MIO2      |      |
-| QSPI0_D1     | PS_MIO3      |      |
-| QSPI0_D2     | PS_MIO4      |      |
-| QSPI0_D3     | PS_MIO5      |      |
-| QSPI0_CLK    | PS_MIO6      |      |
-| QSPI1_CLK    | PS_MIO9      |      |
-| QSPI1_D0     | PS_MIO10     |      |
-| QSPI1_D1     | PS_MIO11     |      |
-| QSPI1_D2     | PS_MIO12     |      |
-| QSPI1_D3     | PS_MIO13     |      |
+| QSPI signals | FPGA signals |
+| :----------: | :----------: |
+|   QSPI1_CS   |   PS_MIO0    |
+|   QSPI0_CS   |   PS_MIO1    |
+|   QSPI0_D0   |   PS_MIO2    |
+|   QSPI0_D1   |   PS_MIO3    |
+|   QSPI0_D2   |   PS_MIO4    |
+|   QSPI0_D3   |   PS_MIO5    |
+|  QSPI0_CLK   |   PS_MIO6    |
+|  QSPI1_CLK   |   PS_MIO9    |
+|   QSPI1_D0   |   PS_MIO10   |
+|   QSPI1_D1   |   PS_MIO11   |
+|   QSPI1_D2   |   PS_MIO12   |
+|   QSPI1_D3   |   PS_MIO13   |
 
-<div align=center><img width="1036" height="400" src="./pics/qspi-flash-vivado.png" alt="image-20220521162528853" style="zoom: 50%;" /></div>
+<div align=center><img width="500" height="200" src="./pics/qspi-flash-vivado.png" alt="image-20220521162528853"  /></div>
 <div align=center>Vivado QSPI-Flash configuration</div>
 
 ### Carry-board
 |  | parts | Parameter |
-| ------ | ------ | ------ |
+| :----: | :----: | :----: |
 | PCIe |  | PCIe 2.0x4  |
 |SFP ||4x|
-|USB 3.0| FT601Q|
-|HDMI Out|ADV7511|
+|USB 3.0| FT601Q||
+|HDMI Out|ADV7511||
 |USB 2.0||4x|
 |Ethernet|KSZ9031RNX|1x|
 |PMOD|||
