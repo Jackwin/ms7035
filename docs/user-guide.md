@@ -1,11 +1,35 @@
 ## Brief Introduction
-The MS7035 board consists of one SOM(system on module) board and a CAD (carry-board), which can cover a wide range of industrial applications or provide the convinience for the geeks to explore novel designs.
 
-In addition to the zynq-7035, the whole board includes DDR3, EMMC, and QSPI-Flash on the SOM, and a rich set of peripherals on the CAD, such as, SD card, HDMI, MIPI interface, USB 2.0 and user IOs.
 
-Feature
-1. ZYNQ Processor
-.
+
+The MS7035 board consists of one SOM(system on module) board and a CAD (carry-board) board, which can cover a wide range of industrial applications or empower the geeks to explore novel designs.
+
+In addition to the zynq-7035, the whole board includes DDR3, EMMC, and QSPI-Flash on the SOM, and a rich set of peripherals , such as,SD card, HDMI, MIPI interface, USB 2.0, Gigabit Ethernet and user IOs，on the CAD.
+
+**Feature**
+
+1. ZYNQ Z-7035
+  1. 667MHz dual-core Cortex-A9 processor
+  2.  28nm Kintex-7 FPGA pogrammable logic
+2. Memory
+  1.  1GB DDR3 with 32-bit bus on PS 
+  2.  2x 256bit QSPI flash
+  3. 16GB EMMC
+3. High Speed Interface
+  1. PCIe 2.0 x4
+  2. 4x SFP 
+  3. Gigabit Ethernet PHY
+  4. 4 USB 2.0 ports
+4. Video peripherals 
+  1. HDMI out
+  2. MIPI CSI & DSI Interface
+5. Switches, Push-buttons, and LEDs
+  - 3 push-buttons
+  - 4 slide switches
+  - 4 LEDs
+6. User Connector
+  1. 1xPMOD
+  2. 64 user IO connector
 
 ## Hardware Components
 ### SOM-board
@@ -19,7 +43,34 @@ Feature
 | connector |  AXK5A2147YG  |  4x|
 
 #### FPGA
-format
+
+The Zynq7035 family is based on the Xilinx SoC architecture, a heterogeneous system containing an ARM A9 processor and the Kinex-7 equivalent FPGA logics. High speed buses bridge the communication between these two parts, such as 4 general-purpose AXI ports and 4 high-speed AXI ports， shown in figure-1.
+
+<center><img src="./pics/zynq-mp-core-dual.png" style="zoom: 50%;" /></center>
+<center>Figure-1 Zynq SOC block diagram</center>
+
+
+
+[Zynq-7000 SoC Product Guide](https://docs.xilinx.com/v/u/en-US/zynq-7000-product-selection-guide)
+
+[DS191-Z-7035-DC and AC Switching Characteristics](https://www.xilinx.com/content/dam/xilinx/support/documents/data_sheets/ds191-XC7Z030-XC7Z045-data-sheet.pdf)
+
+[UG685-Zynq-7000-SoC Packaging and Pinout](https://docs.xilinx.com/v/u/en-US/ug865-Zynq-7000-Pkg-Pinout)
+
+Figure-2 illustrates the banks inside the chip for the XC7Z035 series , but For the **XCZXC7Z035-FFG676-2**, only the followings are bonded.
+
+- HR  bank bonded: bank12, bank13,
+
+- HP bank bonded: bank33, bank 34, bank 35
+
+- GTX bonded: Quads 111, Quads 112 
+
+<center><img src=".\pics\7z035-banks.png" style="zoom:50%;" /></center>
+
+<center> Figure-2: HR and HP banks in ZC7035</center>
+
+Zynq IO banks are designated as either High Performance (HP) or High Density (HD). HP, as its name infers, is where your highest speed IO will be connected, with the VCCO raning from 1.2V to 1.8V and being limited to 1.8V . HD is for general purpose use, providing voltage support from 1.2V to 3.3V and can support a maximum VCCO of 3.3V.
+
 #### DDR3
 #### emmc
 #### QSPI
