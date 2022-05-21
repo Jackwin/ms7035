@@ -9,27 +9,28 @@ In addition to the zynq-7035, the whole board includes DDR3, EMMC, and QSPI-Flas
 **Feature**
 
 1. ZYNQ Z-7035
-  1. 667MHz dual-core Cortex-A9 processor
-  2.  28nm Kintex-7 FPGA pogrammable logic
+   - 667MHz dual-core Cortex-A9 processor
+   - 28nm Kintex-7 FPGA pogrammable logic
 2. Memory
-  1.  1GB DDR3 with 32-bit bus on PS 
-  2.  2x 256bit QSPI flash
-  3. 16GB EMMC
+     - 1GB DDR3 with 32-bit bus on PS 
+     - 2x 256bit QSPI flash
+     - 16GB EMMC
 3. High Speed Interface
-  1. PCIe 2.0 x4
-  2. 4x SFP 
-  3. Gigabit Ethernet PHY
-  4. 4 USB 2.0 ports
+     - PCIe 2.0 x4
+     - 4x SFP 
+     - Gigabit Ethernet PHY
+     - 4 USB 2.0 ports
 4. Video peripherals 
-  1. HDMI out
-  2. MIPI CSI & DSI Interface
+     - HDMI out
+     - MIPI CSI & DSI Interface
 5. Switches, Push-buttons, and LEDs
-  - 3 push-buttons
-  - 4 slide switches
-  - 4 LEDs
+   - 3 push-buttons
+   - 4 slide switches
+   - 4 LEDs
+
 6. User Connector
-  1. 1xPMOD
-  2. 64 user IO connector
+   - 1xPMOD
+   - 64 user IO connector
 
 ## Hardware Components
 ### SOM-board
@@ -44,7 +45,7 @@ In addition to the zynq-7035, the whole board includes DDR3, EMMC, and QSPI-Flas
 
 #### FPGA
 
-The Zynq7035 family is based on the Xilinx SoC architecture, a heterogeneous system containing an ARM A9 processor and the Kinex-7 equivalent FPGA logics. High speed buses bridge the communication between these two parts, such as 4 general-purpose AXI ports and 4 high-speed AXI ports， shown in figure-1.
+The Zynq7035 family is based on the Xilinx SoC architecture, a heterogeneous system containing an ARM A9 processor and the Kinex-7 equivalent FPGA logics. High speed buses bridge the communication between these two parts, such as 4 general-purpose AXI ports and 4 high-speed AXI ports，shown in figure-1.
 
 <center><img src="./pics/zynq-mp-core-dual.png" style="zoom: 50%;" /></center>
 <center>Figure-1 Zynq SOC block diagram</center>
