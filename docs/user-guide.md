@@ -78,7 +78,7 @@ SOM board contains two DDR3 chips from Micron, 1GB capacity together, running at
 
 <div align=center><img width="260" height="84"src=".\pics\micron.png"/></div>
 
-| Vender |   Serial Number   | Package |
+| Vender<div style="width:100px">property</div> |   Serial Number  <div style="width:150px">property</div> | Package <div style="width:150px">property</div>|
 | :----: | :---------------: | :-----: |
 | Micron | MT41K256M16TW-107 | FBGA-96 |
 
@@ -94,7 +94,7 @@ SOM board carries a 16GB eMMC for data storage, which conforms to the JEDEC Vers
 
 *Cautious: Zynq 7000 FPGAs does not support booting from eMMC.*
 
-| Vender  |  Serial Number  |  Package  |
+| Vender <div style="width:150px">property</div> |  Serial Number <div style="width:150px">property</div>|  Package  <div style="width:150px">property</div>|
 | :-----: | :-------------: | :-------: |
 | TOSHIBA | THGBMHG7C1LBAIL | JEDEC 5.1 |
 
@@ -102,7 +102,7 @@ SOM board carries a 16GB eMMC for data storage, which conforms to the JEDEC Vers
 
 
 
-| emmc signals | FPGA signals |
+| emmc signals  <div style="width:290px">property</div>| FPGA signals <div style="width:290px">property</div>|
 | :----------: | :----------: |
 |   MMC_DAT0   | MIO46 |
 |   MMC_CMD    | MIO47 |
@@ -125,7 +125,7 @@ Two QSPI Flashes are combined in parallel to be 512Mbit Flash with 8-bit bus, wh
 
 *Cautious: In order to run high speed clock over 40MHz for the QSPI flash, the MIO8 should be left open.*
 
-| Vender  | Serial Number |   Package    |
+| Vender  <div style="width:150px">property</div>| Serial Number <div style="width:150px">property</div>|   Package   <div style="width:150px">property</div> |
 | :-----: | :-----------: | :----------: |
 | Winbond | W25Q256FVEIG  | WSON-8 8x6mm |
 
@@ -134,7 +134,7 @@ Two QSPI Flashes are combined in parallel to be 512Mbit Flash with 8-bit bus, wh
 
 <div align=center><img width="400" height="200"src="./pics/WSON-8.png" alt="image-20220521161747324" /></div>
 
-| QSPI signals | FPGA signals |
+| QSPI signals <div style="width:290px">property</div>| FPGA signals <div style="width:290px">property</div>|
 | :----------: | :----------: |
 |   QSPI1_CS   |   PS_MIO0    |
 |   QSPI0_CS   |   PS_MIO1    |
@@ -158,7 +158,7 @@ The Vivado design is shown as the following, which the MIO8 should be connected 
 
 
 ### Carry-board
-|  | parts | Parameter |
+|  | parts <div style="width:150px">property</div>| Parameter <div style="width:150px">property</div>|
 | :----: | :----: | :----: |
 | PCIe |  | PCIe 2.0x4  |
 |SFP ||4x|
@@ -182,7 +182,17 @@ vivado design
 
 
 #### PCIe
-#### JTAG
+#### JTAG & Configuration
+
+For Zynq Series FPGA, it supports 4 master boot modes and 2 JTAG slave boot modes.
+Master boot mode means that the boot image can be loaded from external memory devices, such as Quad-SPI flash, SD memory card, NAND Flash, NOR Flash. 
+
+JTAG slave boot modes include Cascade mode and Independent mode. Cascade mode is the most common and default mode. 
+
+<div align=center><img src="./pics/boot-mode-mio.png" width="390" height="240"  /></div>
+
+Ref [UG585-Technical Reference Manual](https://docs.xilinx.com/v/u/en-US/ug585-Zynq-7000-TRM)
+
 #### HDMI
 #### SD
 #### MIPI
