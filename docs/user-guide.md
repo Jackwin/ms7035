@@ -121,7 +121,9 @@ The Vivado design is shown as the following, where the emmc locates at **SD1**
 
 #### QSPI
 
-Two QSPI Flashes are combined in parallel to be 512Mbit Flash with 8-bit bus, which doubles the write-read speed.
+Two QSPI Flashes are combined in parallel to be 512Mbit Flash with 8-bit bus, which doubles the write-read speed. It provides the non-volatile storage.
+
+W25Q256FV is a 32MiB serial flash memory and contains 131,072  256-Byte pages, arranged to 512 64KiB sectors. Each sector contains 256 256-byte pages. Sectors 0…15 are reserved for device firmware and settings and are not accessible to user software. 
 
 *Cautious: In order to run high speed clock over 40MHz for the QSPI flash, the MIO8 should be left open.*
 
@@ -189,11 +191,48 @@ Master boot mode means that the boot image can be loaded from external memory de
 
 JTAG slave boot modes include Cascade mode and Independent mode. Cascade mode is the most common and default mode. 
 
-<div align=center><img src="./pics/boot-mode-mio.png" width="390" height="240"  /></div>
+<div align=center><img src="./pics/boot-mode-mio.png" width="520" height="320"  /></div>
 
 Ref [UG585-Technical Reference Manual](https://docs.xilinx.com/v/u/en-US/ug585-Zynq-7000-TRM)
 
 #### HDMI
+
+ADV7511 is a high-performance HDMI transmitter from ADI . It incorpoates HDMI 1.4 features,  supporting the HDMI 1.4-specific features, HEAC (ARC), and 3D video.
+
+In the hardware design, 24 data lines are wired to support 1080P 60Hz, YcbCr 4:4:4 encoding, shown as following.
+
+| No. | HDMI signals |FPGA Pin |FPGA Signals| IO Standard|
+| :----: | :----: | :----: |:----: |:----: |
+|1 |hdmi_clk|C4| IO_L19P_T3_34|LVCMOS18|
+|2 |hdmi_d[0]  |B2   |IO_L24P_T3_34       |LVCMOS18|
+|3 |hdmi_d[1]  |A3   |IO_L22N_T3_34       |LVCMOS18|
+|4 |hdmi_d[2]  |A4   |IO_L22P_T3_34       |LVCMOS18|
+|5 |hdmi_d[3]  |C2   |IO_L23P_T3_34       |LVCMOS18|
+|6 |hdmi_d[4]  |B1   |IO_L23N_T3_34       |LVCMOS18|
+|7 |hdmi_d[5]  |G6   |IO_L2P_T0_34        |LVCMOS18|
+|8 |hdmi_d[6]  |G5   |IO_L2N_T0_34        |LVCMOS18|
+|9 |hdmi_d[7]  |F5   |IO_L7P_T1_34        |LVCMOS18|
+|10|hdmi_d[8]  |E5   |IO_L7N_T1_34        |LVCMOS18|
+|11|hdmi_d[9]  |C3   |IO_L19N_T3_VREF_34  |LVCMOS18|
+|12|hdmi_d[10] |H6   |IO_L4N_T0_34        |LVCMOS18|
+|13|hdmi_d[11] |H7   |IO_L4P_T0_34        |LVCMOS18|
+|14|hdmi_d[12] |B4   |IO_L20N_T3_34       |LVCMOS18|
+|15|hdmi_d[13] |B5   |IO_L20P_T3_34       |LVCMOS18|
+|16|hdmi_d[14] |D6   |IO_L14P_T2_SRCC_34  |LVCMOS18|
+|17|hdmi_d[15] |C6   |IO_L14N_T2_SRCC_34  |LVCMOS18|
+|18|hdmi_d[16] |J8   |IO_L6P_T0_34        |LVCMOS18|
+|19|hdmi_d[17] |H8   |IO_L6N_T0_VREF_34   |LVCMOS18|
+|20|hdmi_d[18] |H9   |IO_L3P_T0_DQS_PUDC_B_34 |LVCMOS18|
+|21|hdmi_d[19] |G9   |IO_L3N_T0_DQS_34    |LVCMOS18|
+|22|hdmi_d[20] |J9   |IO_L5N_T0_34        |LVCMOS18|
+|23|hdmi_d[21] |J10  |IO_L5P_T0_34        |LVCMOS18|
+|24|hdmi_d[22] |J11  |IO_L1P_T0_34        |LVCMOS18|
+|25|hdmi_d[23] |H11  |IO_L1N_T0_34        |LVCMOS18|
+|26|hdmi_de    |A2   |IO_L24N_T3_34       |LVCMOS18|
+|27|hdmi_hs    |A5   |IO_L21N_T3_DQS_34   |LVCMOS18|
+|28|hdmi_vs    |B6   |IO_L21P_T3_DQS_34   |LVCMOS18|
+
+
 #### SD
 #### MIPI
 #### LED
@@ -202,6 +241,8 @@ Ref [UG585-Technical Reference Manual](https://docs.xilinx.com/v/u/en-US/ug585-Z
 #### UART
 #### Clock 
 #### User IO
+
+#### expansion connector
 
 ## Developer Reference
 ### pin map
