@@ -22,7 +22,7 @@
 
 module top(
   input   clk_50m,
-  // input   rst�???????
+  
   input         mipi_phy_clk_hs_p,
   input         mipi_phy_clk_hs_n,
   input         mipi_phy_clk_lp_p,
@@ -37,6 +37,8 @@ module top(
 
   output[55:0]  con9,
   output[7:0]   pmod,
+
+  output [3:0] core_usr_led,
 
   output [3:0]  usr_led
    
@@ -106,6 +108,8 @@ always @(posedge clk_50m )begin
     led_mode <= led_mode;
   end
 end
+
+assign core_usr_led = {4{led_cnt[26]}};
 
 always @(posedge clk_50m) begin
   case(led_mode)

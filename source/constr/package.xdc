@@ -1,6 +1,6 @@
 
 set_property VCCAUX_IO DONTCARE [get_ports clk_50m]
-set_property IOSTANDARD LVCMOS18 [get_ports clk_50m]
+set_property IOSTANDARD LVCMOS33 [get_ports clk_50m]
 # evaluable board
 # set_property PACKAGE_PIN AC23 [get_ports clk_50m]
 # CAD-MS7035 IO_L12P_T1_MRCC_12

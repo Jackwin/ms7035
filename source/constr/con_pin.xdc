@@ -129,5 +129,5 @@ set_property PACKAGE_PIN Y20 [get_ports {pmod[6]}]
 ##IO_L19P_T3_13
 set_property PACKAGE_PIN W20 [get_ports {pmod[7]}]
 ## IO constrain template
-set_property IOSTANDARD LVCMOS18 [get_ports {pmod[*]}]
-set_property IOSTANDARD LVCMOS18 [get_ports {con9[*]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pmod[*]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {con9[*]}]
