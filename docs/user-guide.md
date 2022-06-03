@@ -31,6 +31,10 @@ In addition to the zynq-7035, the whole board includes DDR3, EMMC, and QSPI-Flas
 6. User Connector
    - 1xPMOD
    - 64 user IO connector
+## Specifiction
+### Mechanical drawing
+
+The SOM-MS7035 is 80mm x 60mm with four mounting holes (M2.5 metric screws) spaced as shown in the drawings below. The 4 mounting holes are connected to GND.
 
 ## Hardware Components
 ### SOM-board
@@ -154,7 +158,6 @@ W25Q256FV is a 32MiB serial flash memory and contains 131,072  256-Byte pages, a
 The Vivado design is shown as the following, which the MIO8 should be connected as the feedback clock to run over 40MHz. 
 
 
-
 <div align=center><img width="500" height="200" src="./pics/qspi-flash-vivado.png" alt="image-20220521162528853"  /></div><div align=center>Vivado QSPI-Flash configuration</div>
 
 
@@ -236,6 +239,16 @@ In the hardware design, 24 data lines are wired to support 1080P 60Hz, YcbCr 4:4
 #### SD
 #### MIPI
 #### LED
+There are 4 Green/Yellow user LEDs on CAD-MS7035 in addition to power LED (Yellow) and configuration LED (Blue).
+User LEDs' anodes are wired to FGPA, serial to 330R resistors.
+
+| No. | LEDs |FPGA Pin |FPGA Signals| IO Standard|
+| :----: | :----: | :----: |:----: |:----: |
+| 1| usr_led[0]|AD10 |IO_L7N_T1_12 |VCCO_bank12 |
+|2 | usr_led[1]|AA10 | IO_L3N_T0_DQS_12| VCCO_bank12|
+|3 | usr_led[2]|Y17 | IO_L19P_T3_12| VCCO_bank12|
+|4 | usr_led[3]|AA17 |IO_L19N_T3_VREF_12 |VCCO_bank12 |
+
 #### Push Button
 #### Switch Button
 #### UART
