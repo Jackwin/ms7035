@@ -32,6 +32,11 @@ module top(
   input[1:0]    mipi_phy_data_lp_p,
   input[1:0]    mipi_phy_data_lp_n,
 
+  inout         mipi_scl,
+  input         mipi_sda,
+  output        mipi_rst,
+  
+
   input[3:0]    slide_button,
   input[1:0]    key,
 

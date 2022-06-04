@@ -98,6 +98,14 @@ set_property -dict {PACKAGE_PIN D5 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs
 set_property -dict {PACKAGE_PIN A9 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_p[1]}]
 set_property -dict {PACKAGE_PIN A8 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_n[1]}]
 
+set_property PACKAGE_PIN D9 [get_ports mipi_scl]
+set_property PACKAGE_PIN D8 [get_ports mipi_sda]
+set_property PACKAGE_PIN C9 [get_ports mipi_rst]
+
+set_property IOSTANDARD LVCMOS33 [get_ports mipi_scl]
+set_property IOSTANDARD LVCMOS33 [get_ports mipi_sda]
+set_property IOSTANDARD LVCMOS33 [get_ports mipi_rst]
+
 
 # # BANK 35
 # NET "IO_L1P_T0_AD0P_35" LOC = "F12";
