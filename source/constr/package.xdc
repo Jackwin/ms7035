@@ -102,9 +102,9 @@ set_property PACKAGE_PIN D9 [get_ports mipi_scl]
 set_property PACKAGE_PIN D8 [get_ports mipi_sda]
 set_property PACKAGE_PIN C9 [get_ports mipi_rst]
 
-set_property IOSTANDARD LVCMOS33 [get_ports mipi_scl]
-set_property IOSTANDARD LVCMOS33 [get_ports mipi_sda]
-set_property IOSTANDARD LVCMOS33 [get_ports mipi_rst]
+set_property IOSTANDARD LVCMOS18 [get_ports mipi_scl]
+set_property IOSTANDARD LVCMOS18 [get_ports mipi_sda]
+set_property IOSTANDARD LVCMOS18 [get_ports mipi_rst]
 
 
 # # BANK 35

@@ -33,7 +33,7 @@ module top(
   input[1:0]    mipi_phy_data_lp_n,
 
   inout         mipi_scl,
-  input         mipi_sda,
+  inout         mipi_sda,
   output        mipi_rst,
   
 
@@ -68,6 +68,16 @@ reg[1:0]    led_mode;
 reg [55:0]  con9_reg;
 reg [7:0]   pmod_reg;
 
+wire mipi_iic_scl_i;
+wire mipi_iic_scl_io;
+wire mipi_iic_scl_o;
+wire mipi_iic_scl_t;
+wire mipi_iic_sda_i;
+wire mipi_iic_sda_io;
+wire mipi_iic_sda_o;
+wire mipi_iic_sda_t;
+
+assign mipi_rst = 0;
 always @(posedge clk_50m) begin
     led_cnt <= led_cnt + 1'd1;
 end
@@ -150,6 +160,16 @@ assign usr_led = usr_led_r;
 assign con9 = con9_reg;
 assign pmod = pmod_reg;
 
+IOBUF mipi_iic_scl_iobuf
+      (.I(mipi_iic_scl_o),
+      .IO(mipi_scl),
+      .O(mipi_iic_scl_i),
+      .T(mipi_iic_scl_t));
+IOBUF mipi_iic_sda_iobuf
+      (.I(mipi_iic_sda_o),
+      .IO(mipi_sda),
+      .O(mipi_iic_sda_i),
+      .T(mipi_iic_sda_t));
 
 ms7035 ms7035_i(
   .mipi_phy_clk_hs_n(mipi_phy_clk_hs_n),
@@ -159,7 +179,13 @@ ms7035 ms7035_i(
   .mipi_phy_data_hs_n(mipi_phy_data_hs_n),
   .mipi_phy_data_hs_p(mipi_phy_data_hs_p),
   .mipi_phy_data_lp_n(mipi_phy_data_lp_n),
-  .mipi_phy_data_lp_p(mipi_phy_data_lp_p)
+  .mipi_phy_data_lp_p(mipi_phy_data_lp_p),
+  .mipi_iic_scl_i(mipi_iic_scl_i),
+  .mipi_iic_scl_o(mipi_iic_scl_o),
+  .mipi_iic_scl_t(mipi_iic_scl_t),
+  .mipi_iic_sda_i(mipi_iic_sda_i),
+  .mipi_iic_sda_o(mipi_iic_sda_o),
+  .mipi_iic_sda_t(mipi_iic_sda_t)
 );
 
 vio_slide_button vio_slide_button_inst(
