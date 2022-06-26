@@ -75,7 +75,7 @@ wire        mipi_iic_sda_i;
 wire        mipi_iic_sda_o;
 wire        mipi_iic_sda_t;
 
-assign mipi_rst = 1'b1;
+assign mipi_rst = 1'b0;
 
 always @(posedge clk_50m) begin
     led_cnt <= led_cnt + 1'd1;
