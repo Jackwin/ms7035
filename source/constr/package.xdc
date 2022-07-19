@@ -79,36 +79,7 @@ set_property PACKAGE_PIN AC13 [get_ports clk_50m]
 #set_property -dict {PACKAGE_PIN B7 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_p[1]}]
 #set_property -dict {PACKAGE_PIN A7 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_n[1]}]
 
-##MIPI-1
-set_property -dict {PACKAGE_PIN J1 IOSTANDARD HSUL_12} [get_ports mipi_phy_clk_lp_p]
-set_property -dict {PACKAGE_PIN H1 IOSTANDARD HSUL_12} [get_ports mipi_phy_clk_lp_n]
 
-set_property -dict {PACKAGE_PIN K2 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data_lp_p[0]}]
-set_property -dict {PACKAGE_PIN K1 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data_lp_n[0]}]
-
-set_property -dict {PACKAGE_PIN H2 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data_lp_p[1]}]
-set_property -dict {PACKAGE_PIN G1 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data_lp_n[1]}]
-
-set_property -dict {PACKAGE_PIN G7 IOSTANDARD LVDS} [get_ports mipi_phy_clk_hs_p]
-set_property -dict {PACKAGE_PIN F7 IOSTANDARD LVDS} [get_ports mipi_phy_clk_hs_n]
-
-set_property -dict {PACKAGE_PIN E6 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_p[0]}]
-set_property -dict {PACKAGE_PIN D5 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_n[0]}]
-
-set_property -dict {PACKAGE_PIN A9 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_p[1]}]
-set_property -dict {PACKAGE_PIN A8 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_n[1]}]
-
-set_property PACKAGE_PIN D9 [get_ports mipi_scl]
-set_property PACKAGE_PIN D8 [get_ports mipi_sda]
-set_property PACKAGE_PIN C9 [get_ports mipi_rst]
-
-set_property IOSTANDARD LVCMOS18 [get_ports mipi_scl]
-set_property IOSTANDARD LVCMOS18 [get_ports mipi_sda]
-set_property IOSTANDARD LVCMOS18 [get_ports mipi_rst]
-
-set_property PULLUP true [get_ports mipi_scl]
-set_property PULLUP true [get_ports mipi_sda]
-set_property PULLUP true [get_ports mipi_rst]
 
 
 # # BANK 35
