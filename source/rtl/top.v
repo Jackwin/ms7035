@@ -35,6 +35,7 @@ module top(
   inout         mipi_scl,
   inout         mipi_sda,
   output        mipi_rst,
+ // output        mipi_25m,
   
 
   input[3:0]    slide_button,
@@ -76,6 +77,18 @@ wire        mipi_iic_sda_o;
 wire        mipi_iic_sda_t;
 
 assign mipi_rst = 1'b0;
+
+
+//clk_wiz_0 clk_inst
+//  (
+//  // Clock out ports  
+//  .clk_25m(mipi_25m),
+//  // Status and control signals               
+//  .reset(~key[0]), 
+//  .locked(),
+// // Clock in ports
+//  .clk_in1(clk_50m)
+//  );
 
 always @(posedge clk_50m) begin
     led_cnt <= led_cnt + 1'd1;
