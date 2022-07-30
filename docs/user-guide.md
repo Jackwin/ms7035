@@ -241,6 +241,22 @@ In the hardware design, 24 data lines are wired to support 1080P 60Hz, YcbCr 4:4
 
 #### SD
 #### MIPI
+For MIPI(Mobile Industry Processor Interface), the interface standard use the PHY specification known as D-PHY. However, in the zynq series FPGA, there are no dedicated D-PHY IO standards. A resistor bridge can be applied to be compitable to D-PHY standard. More details can be found in [XAPP894-D-PHY Solutions](https://docs.xilinx.com/v/u/3CJjPuMjhJXFySrDuQE6eQ)
+
+|  No.  |        Signals        | FPGA Pin |    FPGA Signals    | IO Standard |
+| :---: | :-------------------: | :------: | :----------------: | :---------: |
+|   1   |   mipi_phy_clk_lp_p   |    J1    |    IO_L7P_T1_33    |   HSUL_12   |
+|   2   |   mipi_phy_clk_lp_n   |    H1    |    IO_L7N_T1_33    |   HSUL_12   |
+|   3   | mipi_phy_data_lp_p[0] |    H2    |   IO_L10P_T1_33    |   HSUL_12   |
+|   4   | mipi_phy_data_lp_n[0] |    G1    |   IO_L10N_T1_33    |   HSUL_12   |
+|   5   | mipi_phy_data_lp_p[1] |    G2    |  IO_L3P_T0_DQS_33  |   HSUL_12   |
+|   6   | mipi_phy_data_lp_n[1] |    F2    |  IO_L3N_T0_DQS_33  |   HSUL_12   |
+|   7   |   mipi_phy_clk_hs_p   |    G7    | IO_L12P_T1_MRCC_34 |    LVDS     |
+|   8   |   mipi_phy_clk_hs_n   |    F7    | IO_L12N_T1_MRCC_34 |    LVDS     |
+|   9   | mipi_phy_data_hs_p[0] |    B7    |    IO_18P_T2_34    |    LVDS     |
+|  10   | mipi_phy_data_hs_n[0] |    A7    |    IO_18N_T2_34    |    LVDS     |
+|  11   | mipi_phy_data_hs_p[1] |    F9    |  IO_L9P_T1_DQS_34  |    LVDS     |
+|  12   | mipi_phy_data_hs_n[1] |    E8    |  IO_L9N_T1_DQS_34  |    LVDS     |
 #### LED
 There are 4 Green/Yellow user LEDs on CAD-MS7035 in addition to power LED (Yellow) and configuration LED (Blue).
 User LEDs' anodes are wired to FGPA, serial to 330R resistors.
@@ -277,7 +293,10 @@ A 4-position DIP switch is available on the board. And all the four pins are wir
 
 #### UART
 UART is attached to the PS
-
+|  NO.  |   IO    | FPGA Pin |   FPGA Signals   |   BANK   |
+| :---: | :-----: | :------: | :--------------: | :------: |
+|   1   | UART_TX |  MIO15   | PS_MIO15_UART_TX | BANK 500 |
+|   2   | UART_RX |  MIO14   | PS_MIO14_UART_RX | BANK500  |
 
 #### Clock 
 
@@ -295,11 +314,14 @@ Two low-jitter 156.25 MHz oscillators are available to the transceiver portions 
 |   4   | 156.25MHz |    U5    | MGTREFCLK1_112_N | unmounted |
 
 
-#### User IO
+#### VCCO Selection
+
+In order to meet different IO standards' requirement, bank-12 and bank-13 VCCO can be set to `VCC3V3` or `VCC1V8` via the jumper 10 and jumper 11.
+<div align=center><img src="./pics/bank12-bank13-vcco.png" width="270" height="180"  /></div>
 
 #### Expansion Connector
 
-The 
+The 56 IOs in the epxansion connector provides flexibility to custom applications. Meanwhile, 5V power can be sourced to the outside load.
 
 |  No.  |  IOs   | FPGA Pin |    FPGA Signals    | IO Standard |
 | :---: | :----: | :------: | :----------------: | :---------: |
