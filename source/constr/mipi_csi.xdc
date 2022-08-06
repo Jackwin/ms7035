@@ -29,12 +29,21 @@ set_property -dict {PACKAGE_PIN E8 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs
 
 set_property PACKAGE_PIN D9 [get_ports mipi_scl]
 set_property PACKAGE_PIN D8 [get_ports mipi_sda]
+## leapord 
 set_property PACKAGE_PIN C9 [get_ports mipi_rst]
+#set_property PACKAGE_PIN A10 [get_ports mipi_rst]
+
+set_property PACKAGE_PIN B9 [get_ports mipi_clk]
+
+#set_property PACKAGE_PIN A10 [get_ports {cam_gpio_tri_io[0]}]
+#set_property IOSTANDARD LVCMOS18 [get_ports {cam_gpio_tri_io[0]}]
+#set_property PULLUP true [get_ports {cam_gpio_tri_io[0]}]
 
 set_property IOSTANDARD LVCMOS18 [get_ports mipi_scl]
 set_property IOSTANDARD LVCMOS18 [get_ports mipi_sda]
 set_property IOSTANDARD LVCMOS18 [get_ports mipi_rst]
+set_property IOSTANDARD LVCMOS18 [get_ports mipi_clk]
 
-set_property PULLUP true [get_ports mipi_scl]
-set_property PULLUP true [get_ports mipi_sda]
-set_property PULLUP true [get_ports mipi_rst]
+#set_property PULLUP true [get_ports mipi_scl]
+#set_property PULLUP true [get_ports mipi_sda]
+#set_property PULLUP true [get_ports mipi_rst]
