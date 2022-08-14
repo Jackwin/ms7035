@@ -27,14 +27,17 @@ module top(
   input         mipi_phy_clk_hs_n,
   input         mipi_phy_clk_lp_p,
   input         mipi_phy_clk_lp_n,
-  input[1:0]    mipi_phy_data_hs_p,
-  input[1:0]    mipi_phy_data_hs_n,
-  input[1:0]    mipi_phy_data_lp_p,
-  input[1:0]    mipi_phy_data_lp_n,
+  input[3:0]    mipi_phy_data_hs_p,
+  input[3:0]    mipi_phy_data_hs_n,
+  input[3:0]    mipi_phy_data_lp_p,
+  input[3:0]    mipi_phy_data_lp_n,
 
   inout         mipi_scl,
   inout         mipi_sda,
   output        mipi_rst,
+  output        mipi_clk,
+  
+  //inout [0:0]cam_gpio_tri_io,
   
 
   input[3:0]    slide_button,
@@ -75,7 +78,21 @@ wire        mipi_iic_sda_i;
 wire        mipi_iic_sda_o;
 wire        mipi_iic_sda_t;
 
-assign mipi_rst = 1'b0;
+wire [0:0]cam_gpio_tri_i_0;
+    wire [0:0]cam_gpio_tri_io_0;
+    wire [0:0]cam_gpio_tri_o_0;
+    wire [0:0]cam_gpio_tri_t_0;
+    
+wire        clk_300m;
+wire        locked;
+
+//assign mipi_rst = 1'b0;
+
+vio_0  vio_inst(
+.clk(clk_50m),
+
+.probe_out0(mipi_rst)
+);
 
 always @(posedge clk_50m) begin
     led_cnt <= led_cnt + 1'd1;
@@ -159,6 +176,23 @@ assign usr_led = usr_led_r;
 assign con9 = con9_reg;
 assign pmod = pmod_reg;
 
+   clk_wiz_0 clk_wiz_inst
+   (
+   // Clock out ports  
+   .clk_25m(mipi_clk),
+   // Status and control signals               
+   .reset(1'b0), 
+   .locked(locked),
+  // Clock in ports
+   .clk_in1(clk_50m)
+   );
+
+// IOBUF cam_gpio_tri_iobuf_0
+//          (.I(cam_gpio_tri_o_0),
+//           .IO(cam_gpio_tri_io[0]),
+//           .O(cam_gpio_tri_i_0),
+//           .T(cam_gpio_tri_t_0));
+
  IOBUF mipi_iic_scl_iobuf(
   .I(mipi_iic_scl_o),
   .IO(mipi_scl),
@@ -170,9 +204,35 @@ assign pmod = pmod_reg;
   .IO(mipi_sda),
   .O(mipi_iic_sda_i),
   .T(mipi_iic_sda_t)
-);
+); 
+
+wire dphy_hs_clock_clk;
+
+//IBUFDS #(
+//        .DIFF_TERM("FALSE"),       // Differential Termination
+//        .IBUF_LOW_PWR("TRUE"),     // Low power="TRUE", Highest performance="FALSE" 
+//        .IOSTANDARD("DEFAULT")     // Specify the input I/O standard
+//     ) IBUFDS_hs (
+//        .O(dphy_hs_clock_clk),  // Buffer output
+//        .I(mipi_phy_clk_hs_p),  // Diff_p buffer input (connect directly to top-level port)
+//        .IB(mipi_phy_clk_hs_n) // Diff_n buffer input (connect directly to top-level port)
+//     );
+
+
 
 ms7035 ms7035_i(
+  .mipi_dsi_clk_hs_n(mipi_dsi_clk_hs_n),
+  .mipi_dsi_clk_hs_p(mipi_dsi_clk_hs_p),
+  .mipi_dsi_clk_lp_n(mipi_dsi_clk_lp_n),
+  .mipi_dsi_clk_lp_p(mipi_dsi_clk_lp_p),
+  .mipi_dsi_data_hs_n(mipi_dsi_data_hs_n),
+  .mipi_dsi_data_hs_p(mipi_dsi_data_hs_p),
+  .mipi_dsi_data_lp_n(mipi_dsi_data_lp_n),
+  .mipi_dsi_data_lp_p(mipi_dsi_data_lp_p),
+//.cam_gpio_tri_i(cam_gpio_tri_i_0),
+//           .cam_gpio_tri_o(cam_gpio_tri_o_0),
+//           .cam_gpio_tri_t(cam_gpio_tri_t_0),
+        
   .mipi_phy_clk_hs_n(mipi_phy_clk_hs_n),
   .mipi_phy_clk_hs_p(mipi_phy_clk_hs_p),
   .mipi_phy_clk_lp_n(mipi_phy_clk_lp_n),
@@ -197,5 +257,17 @@ ms7035 ms7035_i(
 //  .probe_in2(slide_button[2]),
 //  .probe_in3(slide_button[3])
 //  );
+
+// ila_0 ila_inst (
+//        .clk(clk_300m),
+
+//        .probe0(mipi_phy_data_lp_n),
+//        .probe1(mipi_phy_data_lp_p),
+//        .probe2(mipi_phy_clk_lp_n),
+//        .probe3(mipi_phy_clk_lp_p),
+//        .probe4(mipi_phy_data_hs_p),
+//        .probe5(mipi_phy_data_hs_n)
+       
+//    );
 
 endmodule
