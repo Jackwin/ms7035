@@ -33,16 +33,22 @@ According to a net list, extract the pure corresponding pin number from a json f
 net_list = ["IO_L19P_T3_35", "IO_L19P_T3_13"]pin_num = [10, 20]
 '''
 
-def extract_pin_num(file_name, net_list): 
+def extract_pin_num(file_name, net_list, part): 
     pin_list = [] 
     with open(file_name) as f: 
         net_dict = json.load(f) 
         for e in net_list:
             if e in net_dict:
-                node_list = net_dict[e] 
-                pin_num = get_pin_num(node_list[1])
-                #pin_list[e] = pin_num
-                pin_list.append(pin_num)
+                node_list = net_dict[e]
+                # find the target part
+                index = 0
+                for item in node_list:
+                    if part in item:
+                        pin_num = get_pin_num(node_list[index])
+                        pin_list.append(pin_num)
+                        break
+                    else:
+                        index = index + 1                      
         f.close()
     return pin_list
     #print(pin_list)
@@ -117,12 +123,12 @@ with open("./pstxnet.dat")as file:
 
 save_to_json(netlist_file, nets)
 
-connector ="CON5"
-part ="2"
+part ="CON7"
+index ="2"
 
-source_pin_file = connector + "_source_pin_part_" + part + ".txt"
-brd_net_file = connector + ".txt"
-target_pin_file = connector + "_" + "target" + "_pin_part_" + part + ".txt"
+source_pin_file = part + "_source_pin_part_" + index + ".txt"
+brd_net_file = part + ".txt"
+target_pin_file = part + "_" + "target" + "_pin_part_" + index + ".txt"
 
 print(source_pin_file)
 
@@ -135,7 +141,9 @@ with open(source_pin_file, 'r') as f:
             break
     f.close()
 
-source_pin_list = extract_pin_num(netlist_file, source_net_list)
+#print(source_net_list)
+
+source_pin_list = extract_pin_num(netlist_file, source_net_list, part)
 print(source_pin_list)
 print(" ---------------- ")
 pin_net_list = parse_brd_net(brd_net_file);
