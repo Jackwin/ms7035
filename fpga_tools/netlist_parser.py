@@ -117,9 +117,17 @@ with open("./pstxnet.dat")as file:
 
 save_to_json(netlist_file, nets)
 
-#net_list = ["IO_L19P_T3_35", "IO_L19P_T3_13"]
+connector ="CON5"
+part ="2"
+
+source_pin_file = connector + "_source_pin_part_" + part + ".txt"
+brd_net_file = connector + ".txt"
+target_pin_file = connector + "_" + "target" + "_pin_part_" + part + ".txt"
+
+print(source_pin_file)
+
 source_net_list = []
-with open("./CON4_source_pin.txt", 'r') as f:
+with open(source_pin_file, 'r') as f:
     while(True):
         net = f.readline().strip()
         source_net_list.append(net)
@@ -130,10 +138,10 @@ with open("./CON4_source_pin.txt", 'r') as f:
 source_pin_list = extract_pin_num(netlist_file, source_net_list)
 print(source_pin_list)
 print(" ---------------- ")
-pin_net_list = parse_brd_net("./CON4.txt");
+pin_net_list = parse_brd_net(brd_net_file);
 #print(pin_net_list)
-target_file = "target_con4.txt"
-with open(target_file, 'w') as f:
+
+with open(target_pin_file, 'w') as f:
     for pin in source_pin_list:
         target_net = pin_net_list[int(pin)-1][2]
         f.write(target_net+'\r\n')
