@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # Cook_file.py is used to make conversion among different format files
 import json
+import os
 
 
 class FileCook(object):
@@ -67,6 +68,54 @@ class FileCook(object):
         self.parse_pstxnet()
        # print(self.pstxnet_net_list)
         self.save_to_json(self.pstxnet_net_list, json_file)
+
+    '''
+    Get the part name from the part net name
+    "U1.AA9" -> U1
+    '''
+
+    def __get_part_name(self, part_net):
+        s = part_net.strip().split('.', 2)
+        # print(s[0])
+        return s[0]
+
+    '''
+    Rule1: every net should connect at least two different parts.
+    "FPGA_DONE": [
+        "U1.AA9",
+        "R9.1",
+        "R10.2"
+    ],
+
+    '''
+
+    def rule_check(self, json_file):
+        with open(json_file, 'r') as f:
+            data = json.load(f)
+            f.close
+
+        for k, v in data.items():
+            # print(v)
+            '''
+            Net only placed in one pin in a single part
+            "IO_L1P_T0_AD0P_35": ["U1.L15"]
+            '''
+            if (len(v) < 2):
+                print("\033[31m Not connected net found: \033[0m" + k)
+            else:
+                part_list = []
+                for e in v:
+                    part_list.append(self.__get_part_name(e))
+                # print(part_list)
+
+                '''
+                Deduplicate the part
+                ['U1', 'U1', 'U2'] -> ['U1', 'U2']
+                '''
+                dedupliate_part_list = list(set(part_list))
+                if (len(dedupliate_part_list) < 2):
+                    print("\033[31m Net only placed in one part found: \033[0m" +
+                          k)
 
 
 '''Parse the nets from orCAD CIS'''
