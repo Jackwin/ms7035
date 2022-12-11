@@ -24,6 +24,8 @@ set_property -dict {PACKAGE_PIN N3 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data
 # IO_L15N_T2_DQS_33
 set_property -dict {PACKAGE_PIN N2 IOSTANDARD HSUL_12} [get_ports {mipi_phy_data_lp_n[2]}]
 
+set_property INTERNAL_VREF 0.6 [get_iobanks 33]
+
 # IO_L12P_T1_MRCC_34
 set_property -dict {PACKAGE_PIN G7 IOSTANDARD LVDS} [get_ports mipi_phy_clk_hs_p]
 # IO_L12N_T1_MRCC_34
@@ -49,12 +51,15 @@ set_property -dict {PACKAGE_PIN F8 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs
 # IO_L11N_T1_SRCC_34
 set_property -dict {PACKAGE_PIN E7 IOSTANDARD LVDS} [get_ports {mipi_phy_data_hs_n[2]}]
 
+#IO_L8P_T1_34
 set_property PACKAGE_PIN D9 [get_ports mipi_scl]
+#IO_L8_T1_34
 set_property PACKAGE_PIN D8 [get_ports mipi_sda]
 ## leapord 
+#IO_L15P_T2_DQS_34
 set_property PACKAGE_PIN C9 [get_ports mipi_rst]
 #set_property PACKAGE_PIN A10 [get_ports mipi_rst]
-
+#IO_L15N_T2_DQS_34
 set_property PACKAGE_PIN B9 [get_ports mipi_clk]
 
 #set_property PACKAGE_PIN A10 [get_ports {cam_gpio_tri_io[0]}]

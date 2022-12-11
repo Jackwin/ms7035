@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="video-app" location="E:/workspace/code_repo/ms7035/vitis/video-app" platform="E:/workspace/code_repo/ms7035/vitis/ms7035/export/ms7035/ms7035.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="video-app-system" sysConfig="ms7035" runtime="cpp" cpu="standalone_ps7_cortexa9_0" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="1b542c136d7b20fb20126cb4bef482af">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1242609575" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.598434908" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>
