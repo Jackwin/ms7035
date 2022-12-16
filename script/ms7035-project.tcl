@@ -45,7 +45,7 @@ if { [info exists ::origin_dir_loc] } {
 }
 
 # Set the project name
-set _xil_proj_name_ "ms7035-201902"
+set _xil_proj_name_ "ms7035-202102"
 
 # Use project name variable, if specified in the tcl shell
 if { [info exists ::user_project_name] } {
@@ -250,13 +250,13 @@ proc cr_bd_ms7035 { parentCell } {
      set list_check_ips "\ 
   xilinx.com:ip:axi_vdma:6.3\
   xilinx.com:ip:axis_subset_converter:1.1\
-  xilinx.com:ip:v_demosaic:1.0\
-  xilinx.com:ip:v_gamma_lut:1.0\
-  xilinx.com:ip:mipi_csi2_rx_subsystem:4.1\
+  xilinx.com:ip:v_demosaic:1.1\
+  xilinx.com:ip:v_gamma_lut:1.1\
+  xilinx.com:ip:mipi_csi2_rx_subsystem:5.1\
   xilinx.com:ip:proc_sys_reset:5.0\
   xilinx.com:ip:processing_system7:5.5\
   xilinx.com:ip:smartconnect:1.0\
-  xilinx.com:ip:v_proc_ss:2.2\
+  xilinx.com:ip:v_proc_ss:2.3\
   xilinx.com:ip:xlconcat:2.1\
   "
 
@@ -355,7 +355,7 @@ proc cr_bd_ms7035 { parentCell } {
  ] $axis_subset_converter_0
 
   # Create instance: demosaic, and set properties
-  set demosaic [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_demosaic:1.0 demosaic ]
+  set demosaic [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_demosaic:1.1 demosaic ]
   set_property -dict [ list \
    CONFIG.MAX_COLS {1920} \
    CONFIG.MAX_DATA_WIDTH {8} \
@@ -364,7 +364,7 @@ proc cr_bd_ms7035 { parentCell } {
  ] $demosaic
 
   # Create instance: gamma, and set properties
-  set gamma [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_gamma_lut:1.0 gamma ]
+  set gamma [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_gamma_lut:1.1 gamma ]
   set_property -dict [ list \
    CONFIG.MAX_COLS {1920} \
    CONFIG.MAX_ROWS {1080} \
@@ -372,7 +372,7 @@ proc cr_bd_ms7035 { parentCell } {
  ] $gamma
 
   # Create instance: mipi_csi2_rx_subsyst_0, and set properties
-  set mipi_csi2_rx_subsyst_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:mipi_csi2_rx_subsystem:4.1 mipi_csi2_rx_subsyst_0 ]
+  set mipi_csi2_rx_subsyst_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:mipi_csi2_rx_subsystem:5.1 mipi_csi2_rx_subsyst_0 ]
   set_property -dict [ list \
    CONFIG.CMN_NUM_LANES {2} \
    CONFIG.CMN_NUM_PIXELS {2} \
@@ -1203,7 +1203,7 @@ proc cr_bd_ms7035 { parentCell } {
   set smartconnect_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:smartconnect:1.0 smartconnect_0 ]
 
   # Create instance: v_proc_ss_0, and set properties
-  set v_proc_ss_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_proc_ss:2.2 v_proc_ss_0 ]
+  set v_proc_ss_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:v_proc_ss:2.3 v_proc_ss_0 ]
   set_property -dict [ list \
    CONFIG.C_COLORSPACE_SUPPORT {2} \
    CONFIG.C_MAX_DATA_WIDTH {8} \
