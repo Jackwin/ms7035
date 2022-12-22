@@ -101,13 +101,13 @@ wire        locked;
 wire        mipi_rst_o_vio;
 wire        mipi_rst_t_vio;
 
-vio_0  vio_inst(
-.clk(clk_50m),
-.probe_in0(gpio_mio_tri_i_0),
+//vio_0  vio_inst(
+//.clk(clk_50m),
+//.probe_in0(gpio_mio_tri_i_0),
 
-.probe_out0(mipi_rst_o_vio),
-.probe_out1(mipi_rst_t_vio)
-);
+//.probe_out0(mipi_rst_o_vio),
+//.probe_out1(mipi_rst_t_vio)
+//);
 
 always @(posedge clk_50m) begin
     led_cnt <= led_cnt + 1'd1;
@@ -252,17 +252,17 @@ ms7035 ms7035_i(
 //  .mipi_dsi_data_hs_p(mipi_dsi_data_hs_p),
 //  .mipi_dsi_data_lp_n(mipi_dsi_data_lp_n),
 //  .mipi_dsi_data_lp_p(mipi_dsi_data_lp_p),
-    .clk_50m_in(clk_50m),
-    .reset_in(1'b0),
+ //   .clk_50m_in(clk_50m),
+ //   .reset_in(1'b0),
   
-   .hdmi_out_data(hdmi_d),
-   .hdmi_out_de(hdmi_de),
-   .hdmi_out_hs(hdmi_hs),
-   .hdmi_out_vs(hdmi_vs),
-   .hdmi_clk(hdmi_clk),
-   .gpio_mio_tri_i(gpio_mio_tri_i_0),
-   .gpio_mio_tri_o(gpio_mio_tri_o_0),
-   .gpio_mio_tri_t(gpio_mio_tri_t_0),
+ //  .hdmi_out_data(hdmi_d),
+ //  .hdmi_out_de(hdmi_de),
+ //  .hdmi_out_hs(hdmi_hs),
+ //  .hdmi_out_vs(hdmi_vs),
+ //  .hdmi_clk(hdmi_clk),
+ //  .gpio_mio_tri_i(gpio_mio_tri_i_0),
+ //  .gpio_mio_tri_o(gpio_mio_tri_o_0),
+ //  .gpio_mio_tri_t(gpio_mio_tri_t_0),
         
   .mipi_phy_clk_hs_n(mipi_phy_clk_hs_n),
   .mipi_phy_clk_hs_p(mipi_phy_clk_hs_p),
@@ -280,12 +280,12 @@ ms7035 ms7035_i(
   .mipi_iic_sda_o(mipi_iic_sda_o),
   .mipi_iic_sda_t(mipi_iic_sda_t),
 
-  .hdmi_iic_scl_i(hdmi_iic_scl_i),
-  .hdmi_iic_scl_o(hdmi_iic_scl_o),
-  .hdmi_iic_scl_t(hdmi_iic_scl_t),
-  .hdmi_iic_sda_i(hdmi_iic_sda_i),
-  .hdmi_iic_sda_o(hdmi_iic_sda_o),
-  .hdmi_iic_sda_t(hdmi_iic_sda_t)
+  //.hdmi_iic_scl_i(hdmi_iic_scl_i),
+  //.hdmi_iic_scl_o(hdmi_iic_scl_o),
+  //.hdmi_iic_scl_t(hdmi_iic_scl_t),
+  //.hdmi_iic_sda_i(hdmi_iic_sda_i),
+  //.hdmi_iic_sda_o(hdmi_iic_sda_o),
+  //.hdmi_iic_sda_t(hdmi_iic_sda_t)
 );
 
 //vio_slide_button vio_slide_button_inst(
