@@ -21,10 +21,13 @@ void Imx274Init(XIicPs *instance_ptr) {
   }
 
   I2cWriteReg16(instance_ptr, IMX274_IIC_ADDR, 0x3000, 0x00);
+  // use mipi interface
   I2cWriteReg16(instance_ptr, IMX274_IIC_ADDR, 0x303e, 0x02);
-
+  // master mode start
   I2cWriteReg16(instance_ptr, IMX274_IIC_ADDR, 0x30f4, 0x00);
+  // bit[1:0] ->using XHS and XVS output
   I2cWriteReg16(instance_ptr, IMX274_IIC_ADDR, 0x3018, 0xa2);
+  // analog gain 
   I2cWriteReg16(instance_ptr, IMX274_IIC_ADDR, 0x300b, 0x7);
 
 
