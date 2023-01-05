@@ -278,7 +278,7 @@ ms7035 ms7035_i(
   .mipi_iic_scl_t(mipi_iic_scl_t),
   .mipi_iic_sda_i(mipi_iic_sda_i),
   .mipi_iic_sda_o(mipi_iic_sda_o),
-  .mipi_iic_sda_t(mipi_iic_sda_t),
+  .mipi_iic_sda_t(mipi_iic_sda_t)
 
   //.hdmi_iic_scl_i(hdmi_iic_scl_i),
   //.hdmi_iic_scl_o(hdmi_iic_scl_o),
