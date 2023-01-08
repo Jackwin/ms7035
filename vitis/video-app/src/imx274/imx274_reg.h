@@ -4,6 +4,7 @@
 
 #define IMX274_TABLE_END	1
 #define IMX274_MAX_RETRIES	3
+#define IMX274_IIC_ADDR 0x57
 
 #define IMX274_TEST_PATTERN_REG			0x303D /* TEST PATTERN */
 #define IMX274_STANDBY_REG			0x3000 /*STANDBY*/
@@ -17,7 +18,7 @@
 
 // Input clock is 24MHz
 // After power-up start-up sequence
-static const imx274_reg imx274_start_2[] = {
+static const imx274_reg imx274_start_1[] = {
 	0x3120, 0x66, // clock settins
 	0x3121, 0x00, // clock settings
 	0x3122, 0x02, // clock settings********

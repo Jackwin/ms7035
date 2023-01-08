@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
 <sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="imx274" location="/home/jackwin/workspace/ms7035/vitis/imx274" platform="/home/jackwin/workspace/ms7035/vitis/top/export/top/top.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="video_system" sysConfig="top" runtime="cpp" cpu="standalone_ps7_cortexa9_0" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="6866d3b56d99991181eaebc6121f7b29">
-  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.115265464" dirty="true">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.115265464">
     <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
   </configuration>
   <configuration name="Release" id="xilinx.gnu.armv7.exe.release.1159167244" dirty="true">
     <configBuildOptions xsi:type="sdkproject:SdkOptions"/>

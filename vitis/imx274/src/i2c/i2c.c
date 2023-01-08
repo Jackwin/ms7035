@@ -65,7 +65,7 @@ int I2cInit(XIicPs *iic_ptr,short device_id ,u32 iic_clk_rate)
 		return XST_FAILURE;
 	}
 
-	status = XIicPs_CfgInitialize(iic_ptr, Config, Config->Baseaddress);
+	status = XIicPs_CfgInitialize(iic_ptr, Config, Config->BaseAddress);
 	if (status != XST_SUCCESS) {
 		xil_printf("XIicPs_CfgInitialize failure\r\n");
 		return XST_FAILURE;

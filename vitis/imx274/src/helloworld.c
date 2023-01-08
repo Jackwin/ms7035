@@ -47,17 +47,33 @@
 
 #include <stdio.h>
 #include "platform.h"
-#include "xil_printf.h"
-#include "imx274.h"
-#include "i2c.h"
 
+#include "xil_printf.h"
+#include "imx274/imx274.h"
+#include "i2c/i2c.h"
+#include "xiicps.h"
+#include "xparameters.h" 
+
+XIicPs ps_i2c0; 
 
 int main()
 {
     init_platform();
 
     print("Hello World\n\r");
-    print("Successfully ran Hello World application");
+    print("Successfully ran Hello World application\n\r");
+
+    I2cInit(&ps_i2c0, XPAR_XIICPS_0_DEVICE_ID,100000);
+
+    char read_data[3];
+    Imx274Init(&ps_i2c0);
+    u16 data = Imx274Read(&ps_i2c0, 0x3130, &read_data[0]);
+    printf("The read data from 0x3130 is %x.\n", read_data[0]);
+    Imx274Read(&ps_i2c0, 0x3AA2, &read_data[1]);
+    printf("The read data from 0x3AA2 is %x.\n", read_data[1]);
+    Imx274Read(&ps_i2c0, 0x303e, &read_data[2]);
+    printf("The read data from 0x303e is %x.\n", read_data[2]);
+    print("Hello World again\n\r");
     cleanup_platform();
     return 0;
 }

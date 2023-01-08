@@ -35,6 +35,11 @@ void Imx274Init(XIicPs *instance_ptr) {
 
 void Imx274Reset() {}
 
+char Imx274Read(XIicPs *instance_ptr, u16 reg_addr){
+  char data = I2cReadReg16(instance_ptr, IMX274_IIC_ADDR, reg_addr);
+  return data;
+}
+
 void Imx274SetSensorMode(uint8_t mode);
 
 #endif
