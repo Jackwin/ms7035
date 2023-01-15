@@ -34,7 +34,7 @@ module top(
 
   inout         mipi_scl,
   inout         mipi_sda,
-  inout         mipi_rst,
+  output        mipi_rst,
   output        mipi_clk,
   
   inout         hdmi_scl,
@@ -95,19 +95,27 @@ wire        hdmi_iic_sda_t;
 wire [0:0]  gpio_mio_tri_i_0;
 wire [0:0]  gpio_mio_tri_o_0;
 wire [0:0]  gpio_mio_tri_t_0;
+
+wire [0:0]  gpio_mio_tri_i_1;
+wire [0:0]  gpio_mio_tri_o_1;
+wire [0:0]  gpio_mio_tri_t_1;
     
 wire        clk_300m;
 wire        locked;
 wire        mipi_rst_o_vio;
 wire        mipi_rst_t_vio;
 
-//vio_0  vio_inst(
-//.clk(clk_50m),
-//.probe_in0(gpio_mio_tri_i_0),
+vio_0  vio_inst(
+  .clk(clk_50m),
+  .probe_out0(mipi_rst_o_vio)
+);
 
-//.probe_out0(mipi_rst_o_vio),
-//.probe_out1(mipi_rst_t_vio)
-//);
+ila_1 ila_inst(
+  .clk(clk_50m),
+  .probe0(mipi_rst),
+  .probe1(gpio_mio_tri_o_0),
+  .probe2(usr_led[3])
+);
 
 always @(posedge clk_50m) begin
     led_cnt <= led_cnt + 1'd1;
@@ -160,16 +168,16 @@ assign core_usr_led = {4{led_cnt[26]}};
 always @(posedge clk_50m) begin
   case(led_mode)
   2'd0: begin
-    usr_led_r <= {4{led_cnt[26]}};
+    usr_led_r <= {3{led_cnt[26]}};
   end
   2'd1, 2'd3: begin
     usr_led_r[0] <= ~led_cnt[27] & led_cnt[26];
     usr_led_r[1] <= led_cnt[27] & ~led_cnt[26];
     usr_led_r[2] <= led_cnt[27] & led_cnt[26];
-    usr_led_r[3] <= ~led_cnt[27] & ~led_cnt[26];
+    //usr_led_r[3] <= ~led_cnt[27] & ~led_cnt[26];
   end
   2'd2: begin
-    usr_led_r[3] <= ~led_cnt[27] & led_cnt[26];
+   // usr_led_r[3] <= ~led_cnt[27] & led_cnt[26];
     usr_led_r[2] <= led_cnt[27] & ~led_cnt[26];
     usr_led_r[1] <= led_cnt[27] & led_cnt[26];
     usr_led_r[0] <= ~led_cnt[27] & ~led_cnt[26];
@@ -187,7 +195,7 @@ always @(posedge clk_50m) begin
   end
 end
 
-assign usr_led = usr_led_r;
+assign usr_led[2:0] = usr_led_r[2:0];
 assign con9 = con9_reg;
 assign pmod = pmod_reg;
 
@@ -201,13 +209,20 @@ assign pmod = pmod_reg;
   // Clock in ports
    .clk_in1(clk_50m)
    );
+// T = '1' : IO -> O
+// T = 0 : I -> IO
+// IOBUF gpio_mio_tri_iobuf_0 (
+//    .I(gpio_mio_tri_o_0 | mipi_rst_o_vio),
+//    .IO(mipi_rst),
+//    .O(gpio_mio_tri_i_0),
+//    .T(gpio_mio_tri_t_0 | mipi_rst_t_vio));
 
- IOBUF gpio_mio_tri_iobuf_0 (
-    .I(gpio_mio_tri_o_0 | mipi_rst_o_vio),
-    .IO(mipi_rst),
-    .O(gpio_mio_tri_i_0),
-    .T(gpio_mio_tri_t_0 | mipi_rst_t_vio));
+assign gpio_mio_tri_i_0 = 1'b1;
+assign mipi_rst = mipi_rst_o_vio | gpio_mio_tri_o_0;
 
+assign gpio_mio_tri_t_1 = 1'b1;
+assign usr_led[3] = gpio_mio_tri_o_1;
+  
  IOBUF mipi_iic_scl_iobuf(
   .I(mipi_iic_scl_o),
   .IO(mipi_scl),
@@ -263,6 +278,10 @@ ms7035 ms7035_i(
  //  .gpio_mio_tri_i(gpio_mio_tri_i_0),
  //  .gpio_mio_tri_o(gpio_mio_tri_o_0),
  //  .gpio_mio_tri_t(gpio_mio_tri_t_0),
+
+  .gpio_tri_i({gpio_mio_tri_i_1, gpio_mio_tri_i_0}),
+  .gpio_tri_o({gpio_mio_tri_o_1, gpio_mio_tri_o_0}),
+  .gpio_tri_t({gpio_mio_tri_t_1, gpio_mio_tri_t_0}),
         
   .mipi_phy_clk_hs_n(mipi_phy_clk_hs_n),
   .mipi_phy_clk_hs_p(mipi_phy_clk_hs_p),
