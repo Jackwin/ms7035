@@ -202,7 +202,7 @@ assign pmod = pmod_reg;
    clk_wiz_0 clk_wiz_inst
    (
    // Clock out ports  
-   .clk_25m(mipi_clk),
+   .clk_24m(mipi_clk),
    // Status and control signals               
    .reset(1'b0), 
    .locked(locked),

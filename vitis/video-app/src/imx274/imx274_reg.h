@@ -75,7 +75,7 @@ static const imx274_reg imx274_start_1[] = {
 //  imx274 second step register configuration 
 static const  imx274_reg imx274_start_2[] = {
 	IMX274_STANDBY_REG, 0x00,
-	0x303E, 0x02, /* SYS_MODE = 2 */
+	0x303E, 0x02, /* SYS_MODE = 2 CSI */
 	IMX274_TABLE_END, 0x00
 };
 

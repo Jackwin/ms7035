@@ -18,16 +18,40 @@ void Imx274Init(XIicPs *instance_ptr) {
     }
   }
 
-  for (int i = 0; i < sizeof(imx274_start_2) / sizeof(imx274_reg); i = i + 2) {
-    I2cWriteReg16(instance_ptr, IMX274_IIC_ADDR, imx274_start_2[i],
-                  imx274_start_2[i + 1]);
-  }
-
   for (int i = 0; i < sizeof(imx274_mode3_1920x1080_raw10) / sizeof(imx274_reg);
        i = i + 2) {
-    I2cWriteReg16(instance_ptr, IMX274_IIC_ADDR,
+    int status = I2cWriteReg16(instance_ptr, IMX274_IIC_ADDR,
                   imx274_mode3_1920x1080_raw10[i],
                   imx274_mode3_1920x1080_raw10[i + 1]);
+    printf("imx274_1920x1080_raw10[%d] is %x, imx274_1920x1080_raw10[%d] is %x\n\r", i,
+           imx274_mode3_1920x1080_raw10[i], i, imx274_mode3_1920x1080_raw10[i + 1]);
+
+    if (status != XST_SUCCESS) {
+      printf("Imx274 init failed.\n");
+    }
+  }
+
+  int count = 20000;
+  while(count--);
+
+
+  for (int i = 0; i < sizeof(imx274_start_2) / sizeof(imx274_reg); i = i + 2) {
+    int status = I2cWriteReg16(instance_ptr, IMX274_IIC_ADDR, imx274_start_2[i],
+                  imx274_start_2[i + 1]);
+    printf("imx274_start_2[%d] is %x, imx274_start_2[%d] is %x\n\r", i,
+           imx274_start_2[i], i, imx274_start_2[i + 1]);
+
+    if (status != XST_SUCCESS) {
+      printf("Imx274 init failed.\n");
+    }
+  }
+
+  count = 20000;
+  while(count--);
+
+  for (int i = 0; i < sizeof(imx274_start_3) / sizeof(imx274_reg); i = i + 2) {
+    I2cWriteReg16(instance_ptr, IMX274_IIC_ADDR, imx274_start_3[i],
+                  imx274_start_3[i + 1]);
   }
 
   I2cWriteReg16(instance_ptr, IMX274_IIC_ADDR, 0x3000, 0x00);

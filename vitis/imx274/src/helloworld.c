@@ -50,13 +50,28 @@
 #include "i2c/i2c.h"
 #include "imx274/imx274.h"
 #include "platform.h"
+#include "vdma.h"
 #include "xiicps.h"
 #include "xil_printf.h"
 #include "xparameters.h"
+#include "vdma.h"
+
+#define VGA_VDMA_ID XPAR_AXIVDMA_0_DEVICE_ID
+
+#ifdef P1080
+#define HORSIZE 1920*3
+#define VERSIZE 1080
+#else
+#define HORSIZE 1280*3
+#define VERSIZE 720
+#endif
 
 XIicPs ps_i2c0;
 
 int main() {
+  XAxiVdma_Config *vdmaConfig;
+  XAxiVdma vdma;
+
   init_platform();
 
   print("Hello World\n\r");
@@ -67,6 +82,20 @@ int main() {
     printf("IIC init failed.\n");
   }
 
+  vdmaConfig = XAxiVdma_LookupConfig(VGA_VDMA_ID);
+  if (!vdmaConfig) {
+    xil_printf("No video DMA found for ID %d\r\n", VGA_VDMA_ID);
+  }
+  status = XAxiVdma_CfgInitialize(&vdma, vdmaConfig, vdmaConfig->BaseAddress);
+  if (status != XST_SUCCESS) {
+    xil_printf("VDMA Configuration Initialization failed %d\r\n", status);
+
+  } /* Start Sensor Vdma */
+  //vdma_write_init(XPAR_AXIVDMA_0_DEVICE_ID, HORSIZE, VERSIZE, 1920*3,
+  //                (unsigned int)dispCtrl.framePtr[dispCtrl.curFrame]);
+  vdma_write_init(XPAR_AXIVDMA_0_DEVICE_ID, HORSIZE, VERSIZE, 1920*3,
+                  0x0);
+
   char read_data[3];
   Imx274Init(&ps_i2c0);
   u16 data = Imx274Read(&ps_i2c0, 0x3129, &read_data[0]);
@@ -75,7 +104,7 @@ int main() {
   printf("The read data from 0x3AA2 is %x.\n", read_data[1]);
   Imx274Read(&ps_i2c0, 0x303e, &read_data[2]);
   printf("The read data from 0x303e is %x.\n", read_data[2]);
-  print("Hello World again\n\r");
+  print("Hello World......\n\r");
 
   cleanup_platform();
   return 0;
